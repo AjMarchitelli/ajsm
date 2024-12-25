@@ -1,0 +1,172 @@
+@use './mixins/media-queries' as *;
+
+.header {
+  background-color: #f4f7fb;
+  color: #333;
+  padding: 5px 0px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+    width: 100%; 
+
+    @include mq(sm) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px 0; /* Space out elements on mobile */
+    }
+
+    .header-logo {
+      flex: 0.5;
+      img {
+        max-width: 80px;
+        height: auto;
+      }
+    }
+
+    .header-phone-numbers {
+      font-size: 20px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      margin-top: 10px;
+
+      .phone-number {
+        margin: 0 10px;
+        color: teal;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          color: #0056b3;
+          transform: scale(1.1);
+          transition: all 0.3s ease;
+        }
+      }
+
+      .desktopOnly {
+        display: inline-block;
+
+        @include mq(sm) {
+          display: none;
+        }
+      }
+
+      .mobileOnly {
+        display: none;
+
+        @include mq(sm) {
+          display: block;
+        }
+      }
+    }
+
+    .cta-container {
+      text-align: right;
+      flex: 0.5;
+      margin-top: 10px; /* Tighten the layout */
+
+      .header-cta {
+        background-color: #008080;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: 600;
+        border: 2px solid gray;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+
+        a {
+          color: white;
+          text-decoration: none;
+        }
+
+        &:hover {
+          border: 2px solid #0056b3;
+          transform: translateY(-3px);
+        }
+
+        &:active {
+          background-color: #004494;
+          transform: translateY(1px);
+        }
+
+        @include mq(sm) {
+          padding: 12px;
+          font-size: 16px;
+          margin-top: 10px;
+        }
+      }
+      @include mq(sm) {
+        text-align: center;
+      }
+    }
+  }
+
+  @include mq(md) {
+    .header-phone-numbers {
+      font-size: 18px;
+    }
+
+    .header-cta {
+      font-size: 20px;
+    }
+  }
+
+  @include mq(lg) {
+    .header-container {
+      padding: 15px;
+    }
+
+    .header-phone-numbers {
+      font-size: 18px;
+    }
+
+    .header-cta {
+      font-size: 22px;
+    }
+  }
+
+  @include mq(sm) {
+    .header-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .header-logo {
+      margin-bottom: 20px;
+    }
+
+    .header-phone-numbers,
+    .cta-container {
+      width: 100%;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .header-phone-numbers {
+      font-size: 16px;
+    }
+
+    .cta-container .header-cta {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+  }
+}
